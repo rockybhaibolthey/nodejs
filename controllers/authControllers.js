@@ -6,8 +6,8 @@ module.exports = {
     createUser: async (req, res) => {
         const newUser = new User({
             name: req.body.name,
-            phone_number: req.body.phone_number,
-            location: req.body.location,
+            phone_number: req.body.number,
+            location: req.body.address,
 
         });
         try {

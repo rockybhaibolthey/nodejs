@@ -32,12 +32,14 @@ module.exports = {
     searchProducts: async (req, res) => {
 
         try {
+            const v = req.params.key;
             const results = await Product.aggregate([
                 {
                     $search: {
                         index: "item",
+
                         text: {
-                            query: req.params.key,
+                            query: v,
                             path: {
                                 wildcard: "*"
                             }
@@ -46,7 +48,6 @@ module.exports = {
                 }
             ])
             res.status(200).json(results)
-            res.status(200).json("product found")
         } catch (error) {
             res.status(500).json({ message: error })
         }
