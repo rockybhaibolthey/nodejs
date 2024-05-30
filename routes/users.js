@@ -4,6 +4,8 @@ const { verifyToken } = require('../middleware/verifyToken')
 
 
 router.get('/user', userController.getAllUsers)
+
+router.put('/updateuser', userController.updateUser)
 router.delete('/delete', verifyToken, userController.delete)
 
 router.get('/:name', userController.getUser)

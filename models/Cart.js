@@ -13,7 +13,8 @@ const CartSchema = new mongoose.Schema({
                 },
                 quantity: { type: String, default: 1 }
             }
-        ]
+        ],
+    status: { type: String, default: "Pending" }
 
 }, { timestamps: true });
 

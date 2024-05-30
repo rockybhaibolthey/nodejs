@@ -12,20 +12,20 @@ module.exports = {
         }
     },
     updateUser: async (req, res) => {
-        const parameter = req.params.name;
+        const parameter = req.body.name;
         try {
-            const products = await User.findOne({ name: parameter })
-            if (products) {
-                // Add the address field to the document
-                products.address = address;
+            // const products = await User.findOne({ name: parameter })
 
-                // Update the document in the collection
-                await collection.updateOne({ name: parameter }, { $set: products });
+            //     // Add the address field to the document
+            //     products.address = req.params.add;
+            //     print(req.params.add);
+            //     print("mmmm");
 
-                console.log('Address added to document successfully.');
-            } else {
-                console.log('Document not found.');
-            }
+            // Update the document in the collection
+            await User.updateOne({ name: req.body.name }, { $set: { location: req.body.add } }, { new: true });
+            console.log(req.body.name);
+            console.log('Address added to document successfully.');
+
         } catch (error) {
             res.status(500).json("failed to get the product")
         }
