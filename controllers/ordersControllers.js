@@ -4,7 +4,7 @@ module.exports = {
     getUserOrders: async (req, res) => {
         const userId = req.user.id;
         try {
-            const userOrders = await Orders.find({ userId })
+            const userOrders = await Orders.find({ userId }).sort({ createdAt: -1 })
                 .populate({
                     path: 'productId',
                     select: '-sizes -description -category'
